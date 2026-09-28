@@ -1,0 +1,19 @@
+name: verify
+on: [push, pull_request]
+jobs:
+  proofs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: The browser journal producer, run in Node, must produce a journal the public verifier accepts
+        run: |
+          node preuves/interop_test.js
+          python preuves/ledger_verify_public.py preuves/demo.jsonl
+          ! python preuves/ledger_verify_public.py preuves/demo_alt.jsonl
+      - name: Package hash list is well-formed (64-hex + filename per line)
+        run: grep -Ev '^[0-9a-f]{64}  \S+\.zip$' preuves/PACKAGE_SHA256.txt && exit 1 || true
+      - run: test -s preuves/TEST_REPORT.md
