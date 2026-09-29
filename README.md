@@ -1,3 +1,5 @@
+[![CI](https://github.com/Quantum-Architecture/qtemplates/actions/workflows/verify.yml/badge.svg?branch=main)](https://github.com/Quantum-Architecture/qtemplates/actions/workflows/verify.yml)
+
 # QTemplates — public demos, tests and proofs
 **Premium, tested, ready-to-integrate software templates** by Quantum Excellium L.L.C. (brand: Quantum Excellium Marango). This repository holds what a buyer can check **before** buying: live demos, the test report and the sealed package hashes. The templates themselves are licensed per edition at [qtemplates.tech](https://qtemplates.tech).
 
